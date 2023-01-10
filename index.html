@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+  <link>
+    <meta charset="utf-8" />
+    <link rel="icon" href=https://abs.twimg.com/favicons/twitter.2.ico></link>
+    <meta
+      name="description"
+      content="Web site created using create-react-app"
+    />
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+      integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk"
+      crossorigin="anonymous"
+    />
+    <link
+      rel="stylesheet"
+      href="https://use.fontawesome.com/releases/v5.14.0/css/all.css"
+      integrity="sha384-HzLeBuhoNPvSl5KYnjx0BT+WB0QEEqLprO+NBkkk5gbc67FTaL7XIGa2w1L0Xbgc"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="./style.css">
+    <title>Twitter</title>
+  </head>
+  <body>
+    <!-- start login page -->
+    <div class="container pt-2" id="login">
+      <form class="w-50 m-auto text-center" method="post"  id="loginForm">
+        <i class="fab fa-twitter fa-2x text-primary mt-2 mb-3"></i>
+        <h2 class="mb-3">Login to Twitter</h2>
+        <input
+          class="form-control mr-sm-2 "
+          type="text"
+          placeholder="Email or username"
+          name="username"
+        />
+        <br />
+        <input
+          class="form-control mr-sm-2"
+          type="password"
+          placeholder="Password"
+          onChange
+        />
+        <br />
+        <button
+          class="btn btn-primary my-2 my-sm-0 w-100 rounded-pill"
+          type="submit"
+        >
+          Login
+        </button>
+      </form>
+    </div>
+    <!-- end login page -->
+    <!-- start home page -->
+    <div class="container pt-2 d-none" id="home">
+      <div class="row">
+        <!-- star left sidebar -->
+        <div class="col-md-2">
+          <div class="position-fixed">
+            <ul class="nav flex-column ">
+              <li class="nav-item mb-2">
+                <a class="nav-link active" href="#">
+                  <i class="fab fa-twitter fa-lg"></i>
+                </a>
+              </li>
+              <li class="nav-item mb-2">
+                <a class="nav-link text-body" href="#">
+                  <i class="fas fa-home fa-lg mr-2"></i> Home
+                </a>
+              </li>
+              <li class="nav-item mb-2">
+                <a class="nav-link text-body" href="#">
+                  <i class="fas fa-hashtag fa-lg mr-2"></i> Explore
+                </a>
+              </li>
+              <li class="nav-item mb-2">
+                <a class="nav-link text-body" href="#">
+                  <i class="far fa-bell fa-lg mr-2"></i> Notifications
+                </a>
+              </li>
+              <li class="nav-item mb-2">
+                <a class="nav-link text-body" href="#">
+                  <i class="far fa-envelope fa-lg mr-2"></i> Messages
+                </a>
+              </li>
+              <li class="nav-item mb-2">
+                <a class="nav-link text-body" href="#">
+                  <i class="far fa-bookmark fa-lg mr-2"></i> Bookmarks
+                </a>
+              </li>
+              <li class="nav-item mb-2">
+                <a class="nav-link text-body" href="#">
+                  <i class="far fa-list-alt fa-lg mr-2"></i> Lists
+                </a>
+              </li>
+              <li class="nav-item mb-2">
+                <a class="nav-link text-body" href="#">
+                  <i class="far fa-user fa-lg mr-2"></i> Profile
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link text-body" href="#">
+                  <i class="fas fa-chevron-circle-down fa-lg mr-2"></i> More
+                </a>
+              </li>
+              <div class="input-group mb-3 mt-3">
+                <div class="input-group-prepend">
+                  <div class="media">
+                    <img
+                      src="./img/user.jpg"
+                      class="mr-2"
+                      idth="40px"
+                      height="40px"
+                      alt="..."
+                    />
+                    <div class="media-body">
+                      <h5 class="mt-1" id="s-name"></h5>
+                    </div>
+                  </div>
+                  <button class="btn btn-outline-secondary dropdown-toggle dropdown-toggle-split border-0" ></button>
+                </div>
+              </div>
+            </ul>
+          </div>
+        </div>
+        <!-- end left sidebar -->
+        <!-- start content -->
+        <div class="col-md-7 p-0 border border-top-0">
+          <h4 class="p-3 border-bottom">Home</h4>
+          <!-- start add post -->
+          <form class="p-3" method="post" id="postForm">
+            <div class="input-group flex-nowrap">
+              <div class="input-group-prepend">
+                <img
+                  src="./img/user.jpg"
+                  alt="dd"
+                  width="50px"
+                  height="50px"
+                  class="mr-3 mt-1 rounded-circle"
+                />
+              </div>
+              <input
+                type="text"
+                class="form-control border-0 mt-2 mb-3"
+                placeholder="What's happening?"
+                name="desc"
+              />
+            </div>
+            <div class="iconImage input-group d-inline-flex">
+              <div class="custom-file">
+                <input
+                  type="file"
+                  class="custom-file-input"
+                  name="postImg"
+                />
+                <i class="icon-file far fa-image"></i>
+              </div>
+            </div>
+            <button class="btn btn-primary float-right">Tweet</button>
+            <div class="clearfix"></div>
+          </form>
+          <!-- end add post -->
+          <!-- start view posts -->
+          <!-- retweet -->
+          <div id="posts"></div>
+          <!-- end view posts -->
+        </div>
+        <!-- end content -->
+        <!-- start right sidebar -->
+        <div class="col-md-3">
+          <div class="position-fixed">
+            <nav class="navbar navbar-light bg-light">
+              <input
+                class="form-control rounded-pill"
+                type="search"
+                placeholder="Search Twitter"
+                aria-label="Search"
+              />
+            </nav>
+            <div class="bg-light rounded-lg">
+              <h4 class="mb-2 p-2 border-bottom">Who to follow</h4>
+              <ul class="list-unstyled">
+                <li class="media p-2 border-bottom">
+                  <img
+                    src="./img/follow.png"
+                    class="mr-3"
+                    idth="40px"
+                    height="40px"
+                    alt="..."
+                  />
+                  <div class="media-body">
+                    <h5 class="mt-0 mb-1">FirstName LastName</h5>
+                    <span>@username</span>
+                    <button class="btn btn-sm bg-transparent border border-primary rounded-pill text-primary float-right">
+                      Follow
+                    </button>
+                  </div>
+                </li>
+                <li class="media p-2 border-bottom">
+                  <img
+                    src="./img/follow.png"
+                    class="mr-3"
+                    idth="40px"
+                    height="40px"
+                    alt="..."
+                  />
+                  <div class="media-body">
+                    <h5 class="mt-0 mb-1">FirstName LastName</h5>
+                    <span>@username</span>
+                    <button class="btn btn-sm bg-transparent border border-primary rounded-pill text-primary float-right">
+                      Follow
+                    </button>
+                  </div>
+                </li>
+                <li class="media p-2">
+                  <img
+                    src="./img/follow.png"
+                    class="mr-3"
+                    width="40px"
+                    height="40px"
+                    alt="..."
+                  />
+                  <div class="media-body">
+                    <h5 class="mt-0 mb-1">FirstName LastName</h5>
+                    <span>@username</span>
+                    <button class="btn btn-sm bg-transparent border border-primary rounded-pill text-primary float-right">
+                      Follow
+                    </button>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <ul class="list-unstyled text-muted">
+              <li class="d-inline-block mr-2">
+                <a href="#" class="text-muted">Terms</a>
+              </li>
+              <li class="d-inline-block mr-2 ">
+                <a href="#" class="text-muted">Privacy policy</a>
+              </li>
+              <li class="d-inline-block mr-2">
+                <a href="#" class="text-muted">Cookies</a>
+              </li>
+              <li class="d-inline-block mr-2">
+                <a href="#" class="text-muted">Ads info</a>
+              </li>
+              <li class="d-inline-block mr-2">
+                <a href="#" class="text-muted">More</a>
+              </li>
+              <li class="text-muted">&copy; 2023 Twitter, Inc.</li>
+            </ul>
+          </div>
+        </div>
+        <!-- end right sidebar -->
+      </div>
+    </div>
+
+    <script
+      src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+      integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"
+      integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI"
+      crossorigin="anonymous"
+    ></script>
+    <script src="./main.js"></script>
+  </body>
+</html>
